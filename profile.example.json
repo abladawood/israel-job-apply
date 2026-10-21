@@ -1,0 +1,16 @@
+{
+  "first_name": "Your",
+  "last_name": "Name",
+  "email": "you@example.com",
+  "phone": "+972-50-000-0000",
+  "location": "Israel",
+  "linkedin": "https://www.linkedin.com/in/your-profile/",
+  "github": "https://github.com/your-username",
+  "resume_path": "cv/your_cv.pdf",
+  "years_experience": 4,
+  "skills": ["c++","go","golang","python","typescript","javascript","kubernetes","docker","gcp","linux","rest","ci/cd","microservices","git","postgresql","kafka","grpc"],
+  "title_include": ["software engineer","backend","back-end","platform","infrastructure","distributed","sde","full stack","fullstack","devops","sre","ai engineer","systems"],
+  "title_exclude": ["intern","student","junior","senior staff","principal","director","manager","vp","head of","frontend","front-end","qa manual","support"],
+  "seniority_penalty": ["senior","sr.","lead","staff","architect"],
+  "location_include": ["israel","tel aviv","herzliya","haifa","yokneam","jerusalem","ra'anana","raanana","petah","ramat gan","netanya"]
+}

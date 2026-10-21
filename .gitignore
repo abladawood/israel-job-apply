@@ -1,0 +1,10 @@
+# personal data - never commit these
+profile.json
+cv/
+applied.csv
+jobs.csv
+seen_jobs.json
+boards_cache.json
+__pycache__/
+.venv/
+.DS_Store
