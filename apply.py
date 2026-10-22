@@ -16,12 +16,15 @@ a = ap.parse_args()
 FIELDS = {  # selector fragments -> profile values
     "first_name": P["first_name"], "last_name": P["last_name"], "email": P["email"],
     "phone": P["phone"], "linkedin": P["linkedin"], "github": P["github"],
+    "website": P.get("website", ""),
 }
 def fill_frame(fr):
     n = 0
     for inp in fr.query_selector_all("input[type=text],input[type=email],input[type=tel],input[type=url],input:not([type])"):
+        try: label = inp.evaluate("e => Array.from(e.labels || []).map(l => l.innerText).join(' ')")
+        except Exception: label = ""
         key = " ".join(filter(None, [inp.get_attribute("name"), inp.get_attribute("id"),
-              inp.get_attribute("aria-label"), inp.get_attribute("placeholder")])).lower()
+              inp.get_attribute("aria-label"), inp.get_attribute("placeholder"), label])).lower()
         val = None
         if "first" in key and "name" in key: val = FIELDS["first_name"]
         elif "last" in key and "name" in key: val = FIELDS["last_name"]
@@ -29,8 +32,9 @@ def fill_frame(fr):
         elif "phone" in key: val = FIELDS["phone"]
         elif "linkedin" in key: val = FIELDS["linkedin"]
         elif "github" in key: val = FIELDS["github"]
+        elif any(k in key for k in ("website", "portfolio", "personal site", "personal url", "personal web", "homepage", "other url")): val = FIELDS["website"]
         elif key.strip() in ("name", "full_name", "full name", "fullname"): val = f'{FIELDS["first_name"]} {FIELDS["last_name"]}'
-        if val and val != "FILL_ME":
+        if val and val != "FILL_ME" and "FILL_ME" not in val:
             try: inp.fill(val); n += 1
             except Exception: pass
     files = fr.query_selector_all("input[type=file]")
