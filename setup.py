@@ -59,5 +59,14 @@ p["location_include"] = ask_list(
 if not p["linkedin"]: p["linkedin"] = "FILL_ME"
 if not p["github"]: p["github"] = ""
 json.dump(p, open("profile.json", "w"), indent=2, ensure_ascii=False)
+print("\n== Companies ==")
+print("The tool checks a built-in list of Israeli tech companies. If you work in another field,")
+print("you should add the companies you care about (you can also do this later with: python3 add_company.py).")
+print("you can use AI to generate company names that relate to your field")
+
+if input("Add/choose companies now? (y/n) [y]: ").strip().lower() != "n":
+    import add_company
+    add_company.add_interactive(fresh_start_question=True)
+
 print("\nDone! Saved profile.json (it stays on your computer only).")
 print("Next:  python3 collect.py   then   python3 apply.py --min 65 --limit 10")

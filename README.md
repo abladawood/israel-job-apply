@@ -61,6 +61,9 @@ It asks simple questions and creates your private `profile.json` for you:
 - your CV: **drag your CV file into the terminal window** and press Enter. It is copied into a `cv` folder for you. A PDF works best.
 - the kind of jobs you want: words that should appear in the job title (for example `marketing, product manager`),
   words you don't want (`intern, junior`), your skills, and the cities you'd work in.
+- **the companies to check.** The tool comes with ~250 Israeli tech companies. If you work in another field,
+  answer `n` to "Keep it?" and add your own: paste a link to a company's careers page (or to one of its job postings),
+  or just type the company name. One per line, empty line to finish.
 
 You only do this once. To change your answers later, run `python3 setup.py` again.
 
@@ -142,7 +145,10 @@ Workday jobs are listed but need an account on each company's site, so you fill 
 ## Customize (optional)
 
 - `profile.json`: your details and the filters used for scoring. Re-run `setup.py` to change them.
-- `companies.json`: the companies the tool checks. Add the company name as it appears in its careers-page address
+- Add more companies later: `python3 add_company.py`, then paste careers-page links or company names.
+  Tip: open a job on the company's careers site; if the address contains `greenhouse`, `lever`, `ashbyhq`,
+  `comeet` or `myworkdayjobs`, the tool understands it. A company with its own custom careers site can't be added.
+- `companies.json`: the companies the tool checks (the commands above edit it for you). Add the company name as it appears in its careers-page address
   (`boards.greenhouse.io/<name>`, `jobs.lever.co/<name>`, `jobs.ashbyhq.com/<name>`). Names that don't exist are skipped.
   Comeet and Workday entries need more details; copy the examples already in the file.
 
